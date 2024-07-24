@@ -64,7 +64,6 @@ app.*.map.json
 .gradle/
 build/
 gradle.properties
-settings.gradle
 !gradle/wrapper/gradle-wrapper.jar
 **/build/
 
