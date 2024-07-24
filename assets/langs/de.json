@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "intro_message": "Willkommen\nbei Tridom Points!",
+  "round": "Runde",
+  "points": "Punkte",
+  "tiles": "Steine",
+  "name": "Name",
+  "editRules": {
+    "title": "Spielregeln bearbeiten",
+    "maxPlayers": "Maximale Anzahl der Spieler in einem Spiel",
+    "startBonus": "Startbonus (mit Tripple)",
+    "startBonusNoTriple": "Startbonus (ohne Tripple)",
+    "finishMinimum": "Mindestpunktzahl zum Beenden des Spiels",
+    "finishBonus": "Bonuspunkte für das Beenden einer Runde",
+    "bridgeValue": "Bonus für eine \"Brücke\" oder \"Zwei Seiten\"",
+    "hexagonValue": "Bonus für ein Sechseck",
+    "doubleHexagonValue": "Bonus für ein Doppel-Sechseck",
+    "tripleHexagonValue": "Bonus für ein Dreifach-Sechseck",
+    "maxRetries": "Maximale Anzahl der Wiederholungen (kann nicht legen)",
+    "retryFee": "Strafpunkte für Wiederholungen",
+    "retryFailed": "Strafpunkte wenn alle Wiederholungen fehlgeschlagen sind",
+    "tilesPerPlayer": "Anzahl der Steine pro Spieler bei {} Spielern",
+    "tripleValue": "Wert für einen Stein mit 3 x \"{}\""
+  },
+  "startPage": {
+    "noPlayers": "Noch sind keine Spieler im Spiel.",
+    "enterPlayers": "Bitte gib die Namen der Spieler ein.",
+    "enterName": "Bitte gib einen Namen ein.",
+    "addPlayer": "Spieler hinzufügen",
+    "startGame": "Spiel starten",
+    "resetPlayerSelection": "Spielerauswahl zurücksetzen"
+  },
+  "firstRound": {
+    "text1": "Der Spieler mit dem höchsten Tripple-Wert beginnt.\nWenn niemand einen Tripple hat, beginnt der Spieler mit der höchsten Augenzahl. Tippe diesen Spieler an bevor du auf den ausgelegten Tripple tippst oder die Punktezahl eingibst.\n\nDie Startpunkte sind die Summe aus dem Stein-Wert und dem Startbonus.",
+    "text2": "Anzahl der Spielsteine zu Beginn: {}",
+    "text3": "Punkte des Startsteins (hier tippen)",
+    "title": "Eröffnung"
+  },
+  "mainRound": {
+    "enter_points": "Gib den Steinwert für {} ein.",
+    "edit": "Spieler bearbeiten",
+    "points": "Punkte (hier tippen). Wenn du Bonuspunkte hast, s.u., wähle sie zuvor aus!",
+    "undo": "Rück-gängig",
+    "undo1": "Rückgängig",
+    "restart": "Neustart",
+    "no_active_player": "Markiere den aktiven Spieler!",
+    "undo_question": "Möchtest du die letzte Aktion von Spieler {} wirklich rückgängig machen?",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "reset": "Spiel zurück setzen",
+    "reset_question": "Sollen alle Spielstände gelöscht und alle Spieler entfernt werden?",
+    "cant_retry": "Kann immer noch nicht legen. ({})",
+    "retry": "Verbleibende Wiederholungen: {}",
+    "not_finished": "Das Spiel ist noch nicht beendet.",
+    "bonus": "Für {name} {points} Bonuspunkte hinzugefügt. Gibt jetzt noch den Steinwert ein."
+  },
+  "lastRound": {
+    "finish" : "Alle verbliebenen Steinwerte sind eingetragen.",
+    "newRound": "Neue Runde",
+    "sets": "Gib den Wert der unausgelegten Steine nacheinander ein.",
+    "points": "Punkte der noch ungelegten Steine",
+    "winners": "Siegerehrung",
+    "end": "Ende",
+    "title": "Ende der aktuellen Runde"
+  },
+  "winnerPage": {
+    "congratulations": "Herzlichen Glückwunsch, {}!",
+    "newGame": "Neues Spiel starten",
+    "newGame1": "Neue\n\nRunde"
+  },
+  "showCase": {
+    "languageTitle": "Sprache",
+    "languageDescription": "Wähle die Sprache für das Spiel",
+    "rulesTitle": "Spielregeln",
+    "rulesDescription": "Triominos bzw. Super Tridom haben unterschiedliche Regeln. Passe sie hier für deine Variant an.",
+    "selectCurrentPlayerTitle": "Spielerauswahl",
+    "selectCurrentPlayerDescription": "Bevor Punkte eingegeben werden können, muss ein Spieler ausgewählt sein.",
+    "changeCurrentPlayerTitle": "Spielerreihenfolge ändern",
+    "changeCurrentPlayerDescription": "Ändere den aktiven Spieler, indem du auf ihn tippst.",
+    "editPlayerTitle": "Spieler bearbeiten",
+    "editPlayerDescription": "Ändere die Punkte oder die Anzahl der Steine des Spielers, indem du ihn lange auf ihn drückst.",
+    "retryTitle": "Kann nicht legen",
+    "retryDescription": "Wenn ein Spieler nicht legen kann, tippe hier.",
+    "bridgeTitle": "Bonuspunkte",
+    "bridgeDescription": "Für bestimmte Kombinationen gibt es Bonuspunkte. Wähle diese aus, bevor du den Steinwert eingibst.",
+    "undoMenuTitle": "Rückgängig",
+    "undoMenuDescription": "Mache die letzte Aktion rückgängig oder beginne das Spiel hier neu.",
+    "finishRoundTitle": "Nächste Runde",
+    "finishRoundDescription": "Startet hier die nächste Runde, wenn alle Punkte eingetragen sind.",
+    "scoreChartTitle": "Punkteverlauf",
+    "scoreChartDescription": "Schauen Sie sich die Entwicklung der Punkte der Spieler an, in dem du auf den Balken tippst."
+  },
+  "about": {
+    "author": "© 2024 Carsten Winkler. Alle Rechte vorbehalten.",
+    "title": "Über Tridom Points",
+    "descriptionLabel": "Beschreibung",
+    "description": "Tridom Points ist eine App, die dir hilft, die Punkte beim Spiel Super-Tridom / Triominos zu zählen. Die App ist kostenlos, werbefrei und erhebt auch keinerlei persönliche Daten. Ich habe diese App in meiner Freizeit geschrieben und freue mich über jedes positives Feedback. Wenn du Fragen oder Anregungen hast, schreibe mir eine E-Mail an tridompoints@relaxmaus.de. Viel Spaß beim Spielen!"
+  },
+  "playerScoreBarChart": {
+    "pointsHistoryOf": "Punkteverlauf von {}"
+  },
+  "undo" : {
+    "title": "Aktion rückgängig machen",
+    "question": "Wollen Sie den letzten Zug von {name} rückgängig machen? Dies wird die letzten Punkte ({points}{bonus}) rückgängig machen.",
+    "yes": "Ja",
+    "no": "Nein"
+  }
+}

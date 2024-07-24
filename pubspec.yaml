@@ -1,0 +1,36 @@
+name: tridompoints
+description: "Score counter for Super Tridom / Triominos games"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  bloc: ^8.1.4
+  easy_localization: ^3.0.7
+  flutter_bloc: ^8.1.6
+  shared_preferences: ^2.2.3
+  showcaseview: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/icon.png"
+  min_sdk_android: 16
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/langs/
+    - assets/icons/

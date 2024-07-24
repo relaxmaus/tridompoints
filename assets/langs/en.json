@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "intro_message": "Welcome\nto  Tridom Points!",
+  "round": "Round",
+  "points": "Points",
+  "tiles": "Tiles",
+  "name": "Name",
+  "editRules": {
+    "title": "Edit game rules",
+    "maxPlayers": "Maximum number of players in the game",
+    "startBonus": "Starting bonus (with triple)",
+    "startBonusNoTriple": "Starting bonus (without triple)",
+    "finishMinimum": "Minimum score to end the game",
+    "finishBonus": "Bonus points for finishing a round",
+    "bridgeValue": "Bonus for a \"bridge\" or \"two sides\"",
+    "hexagonValue": "Bonus for a hexagon",
+    "doubleHexagonValue": "Bonus for a double hexagon",
+    "tripleHexagonValue": "Bonus for a triple hexagon",
+    "maxRetries": "Maximum number of retries (can't make a match)",
+    "retryFee": "Penalty points for retries",
+    "retryFailed": "Penalty points if all retries have failed",
+    "tilesPerPlayer": "Number of tiles per player with {} players",
+    "tripleValue": "Value for a tile with 3 x \"{}\""
+  },
+  "startPage": {
+    "noPlayers": "No players in the game yet.",
+    "enterPlayers": "Please enter the names of the players.",
+    "enterName": "Please fill in a name.",
+    "addPlayer": "Add player",
+    "startGame": "Start game",
+    "resetPlayerSelection": "Reset player selection"
+  },
+  "firstRound": {
+    "text1": "The player with the highest triple value starts.\nIf no one has a triple, the player with the highest score starts. Tap on this player before tapping on the triple or entering the number of points.\n\nThe starting point is the sum of the tile value and the starting bonus.",
+    "text2": "Number of tiles at the start: {}",
+    "text3": "Points of the starting tile (tap here)",
+    "title": "Opening"
+  },
+  "mainRound": {
+    "enter_points": "Enter the value of the tile for {}.",
+    "edit": "Edit player",
+    "points": "Points  (tap here). If you have bonus points, see below, select them first!",
+    "undo": "Undo",
+    "undo1": "Undo",
+    "restart": "Restart",
+    "no_active_player": "Selection of active player!",
+    "undo_question": "Do you really want to undo the last action of player {}?",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "reset": "Reset game",
+    "reset_question": "Should all the game saves be deleted and all the players be removed?",
+    "cant_retry": "Still unable to lay. ({})",
+    "retry": "Remaining repetitions: ({})",
+    "not_finished": "The game is not over yet.",
+    "bonus": "{points} bonus points added for {name}. Now enter the value of the tile."
+  },
+  "lastRound": {
+    "finish" : "All remaining tile values are entered.",
+    "newRound": "New round",
+    "sets": "Enter the value of the tiles that are not played, one after the other.",
+    "points": "Points of unplaced tiles",
+    "winners": "Award ceremony",
+    "end": "End",
+    "title": "End of current round"
+  },
+  "winnerPage": {
+    "congratulations": "Congratulations, {}!",
+    "newGame": "Start new game",
+    "newGame1": "New\n\nGame"
+  },
+  "showCase": {
+    "languageTitle": "Language",
+    "languageDescription": "Select the language of the app",
+    "rulesTitle": "Game rules",
+    "rulesDescription": "Triominos and Super Tridom have different rules. Adapt them here for your variant.",
+    "selectCurrentPlayerTitle": "Select player",
+    "selectCurrentPlayerDescription": "Before you can enter points, you must select a player.",
+    "changeCurrentPlayerTitle": "Change current player",
+    "changeCurrentPlayerDescription": "Change the active player by tapping on them.",
+    "editPlayerTitle": "Edit player",
+    "editPlayerDescription": "Change the player's points or number of tiles by pressing and holding on them.",
+    "retryTitle": "Cannot discard a tile",
+    "retryDescription": "When a player cannot discard a tile, tap here.",
+    "bridgeTitle": "Bonus points",
+    "bridgeDescription": "Bonus points are awarded for certain combinations. Select these before entering the value of the tile.",
+    "undoMenuTitle": "Undo",
+    "undoMenuDescription": "Undo the last action of the active player or start new game here.",
+    "finishRoundTitle": "Start next round",
+    "finishRoundDescription": "Start the next round here when all the points have been entered.",
+    "scoreChartTitle": "Score table",
+    "scoreChartDescription": "Tap on the bar to see the players' scores."
+  },
+  "about": {
+    "author": "© 2024 Carsten Winkler. All rights reserved.",
+    "title": "About Tridom Points",
+    "descriptionLabel": "Description",
+    "description": "Tridom Points is an application that helps you to count the points in the game Super Tridom / Triominos. The app is free, ad-free and does not collect any personal data. I wrote this app in my spare time and appreciate any positive feedback. If you have any questions or suggestions, please email me at tridompoints@relaxmaus.de. Have fun playing!"
+  },
+  "playerScoreBarChart": {
+    "pointsHistoryOf": "Points history of {}"
+  },
+  "undo" : {
+    "title": "Undo action",
+    "question": "Do you want to undo {name}'s last move? This will undo the last points ({points}{bonus}).",
+    "yes": "Yes",
+    "no": "No"
+  }
+}
