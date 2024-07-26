@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "intro_message": "Willkommen\nbei Tridom Points!",
+  "intro_message": "Willkommen\nbei Triomino Scorekeeper!",
   "round": "Runde",
   "points": "Punkte",
   "tiles": "Steine",
@@ -31,7 +31,9 @@
     "resetPlayerSelection": "Spielerauswahl zurücksetzen"
   },
   "firstRound": {
-    "text1": "Der Spieler mit dem höchsten Tripple-Wert beginnt.\nWenn niemand einen Tripple hat, beginnt der Spieler mit der höchsten Augenzahl. Tippe diesen Spieler an bevor du auf den ausgelegten Tripple tippst oder die Punktezahl eingibst.\n\nDie Startpunkte sind die Summe aus dem Stein-Wert und dem Startbonus.",
+    "explanations": "Tippe hier für Erklärungen.",
+    "hideExplanations": "Erklärungen ausblenden.",
+    "text1": "1a. Ermittle den Spieler mit dem höchsten Triple.\n2a. Tippe den entsprechenden Spielernamen an.\n3a. Tippe den passenden Triple an.\nODER Wenn kein Triple vorhanden ist:\n1b. Ermittelt den Spieler mit dem höchsten Steinwert.\n2b. Tippe den entsprechenden Spielernamen an.\n3b. Tippe auf den Button 'Punkte des Startsteins'.\n4b. Trage die Steinwewert ein.",
     "text2": "Anzahl der Spielsteine zu Beginn: {}",
     "text3": "Punkte des Startsteins (hier tippen)",
     "title": "Eröffnung"
@@ -39,7 +41,7 @@
   "mainRound": {
     "enter_points": "Gib den Steinwert für {} ein.",
     "edit": "Spieler bearbeiten",
-    "points": "Punkte (hier tippen). Wenn du Bonuspunkte hast, s.u., wähle sie zuvor aus!",
+    "points": "Punkte (hier tippen).\nBonuspunkte, s.u., immer zuerst auswähler!",
     "undo": "Rück-gängig",
     "undo1": "Rückgängig",
     "restart": "Neustart",
@@ -52,16 +54,19 @@
     "cant_retry": "Kann immer noch nicht legen. ({})",
     "retry": "Verbleibende Wiederholungen: {}",
     "not_finished": "Das Spiel ist noch nicht beendet.",
-    "bonus": "Für {name} {points} Bonuspunkte hinzugefügt. Gibt jetzt noch den Steinwert ein."
+    "bonus": "Für {name} {points} Bonuspunkte hinzugefügt. Gibt jetzt noch den Steinwert ein.",
+    "description": "Der Spieler, der an der Reihe ist, ist markiert. Er kann bei Bedarf durch Antippen eines anderen Spielers getauscht werden.\nGib nun den Steinwert des ausgelegten Steins bei 'Punkte' ein.\nWenn du Bonuspunkte hast, z.B. eine Brücke, wähle diese vorher aus, damit der Spieler die entsprechenden Bonuspunkte zusätzlich erhält.\nKann der aktuelle Spieler nicht legen, tippe auf das Symbol mit dem durchgestrichenen Stein. Die Strafpunkte werden automatisch eingetragen.\nHat ein Spieler einen Steinwert falsch eingegeben, so tippe auf das Bleistiftsymbol und dann auf 'Rückgängig'.\nSie können auch den Namen des Spielers lange antippen, um den Namen, die Punkte und die Anzahl der Steine zu ändern.\nMöchtest du die Punktehistorie eines Spielers sehen, so tippe auf den Punktebalken des Spielers."
   },
   "lastRound": {
     "finish" : "Alle verbliebenen Steinwerte sind eingetragen.",
     "newRound": "Neue Runde",
+    "toWinner": "Zur Siegerehrung",
     "sets": "Gib den Wert der unausgelegten Steine nacheinander ein.",
-    "points": "Punkte der noch ungelegten Steine",
+    "points": "Punkte der noch ungelegten Steine (hier tippen).",
     "winners": "Siegerehrung",
     "end": "Ende",
-    "title": "Ende der aktuellen Runde"
+    "title": "Ende der aktuellen Runde",
+    "description": "Die Steinwerte der Mitspieler werden nacheinander unter Punkte eingetragen.\nSind alle Punkte eingetragen, drücke 'Neue Runde'.\nHat ein Spieler die Punktzahl für das Spielende erreicht, geht es automatisch zur Siegerehrung."
   },
   "winnerPage": {
     "congratulations": "Herzlichen Glückwunsch, {}!",
@@ -92,9 +97,9 @@
   },
   "about": {
     "author": "© 2024 Carsten Winkler. Alle Rechte vorbehalten.",
-    "title": "Über Tridom Points",
+    "title": "Über Triomino Scorekeeper",
     "descriptionLabel": "Beschreibung",
-    "description": "Tridom Points ist eine App, die dir hilft, die Punkte beim Spiel Super-Tridom / Triominos zu zählen. Die App ist kostenlos, werbefrei und erhebt auch keinerlei persönliche Daten. Ich habe diese App in meiner Freizeit geschrieben und freue mich über jedes positives Feedback. Wenn du Fragen oder Anregungen hast, schreibe mir eine E-Mail an tridompoints@relaxmaus.de. Viel Spaß beim Spielen!"
+    "description": "Triomino Scorekeeper ist eine App, die dir hilft, die Punkte beim Spiel Super-Tridom / Triominos zu zählen. Die App ist kostenlos, werbefrei und erhebt auch keinerlei persönliche Daten. Ich habe diese App in meiner Freizeit geschrieben und freue mich über jedes positives Feedback. Wenn du Fragen oder Anregungen hast, schreibe mir eine E-Mail an tridompoints@relaxmaus.de. Viel Spaß beim Spielen!"
   },
   "playerScoreBarChart": {
     "pointsHistoryOf": "Punkteverlauf von {}"

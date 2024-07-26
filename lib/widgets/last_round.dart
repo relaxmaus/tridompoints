@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
+import 'package:tridompoints/widgets/description.dart';
 import 'package:tridompoints/widgets/main_round.dart';
 import 'package:tridompoints/widgets/player_overview.dart';
 import 'package:tridompoints/widgets/player_score_bar_chart.dart';
@@ -112,7 +113,9 @@ class _LastRoundState extends State<LastRound> {
                       const PlayerOverview(),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  Description(
+                    description: context.tr('lastRound.description'),
+                  ),
                   Text(
                     context.tr('lastRound.sets'),
                     style: const TextStyle(fontSize: 18),
@@ -198,7 +201,9 @@ class _LastRoundState extends State<LastRound> {
                                   ),
                                   const SizedBox(width: 8),
                                   Text(
-                                    context.tr('lastRound.newRound'),
+                                    state.players.any((player) => player.stackOfPoints.isNotEmpty && player.stackOfPoints.last.y >= Rules.finishMinimum)
+                                        ? context.tr('lastRound.toWinner')
+                                        : context.tr('lastRound.newRound'),
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       color: Colors.white,
@@ -211,17 +216,6 @@ class _LastRoundState extends State<LastRound> {
                                     color: Colors.white,
                                   ),
                                 ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                              child: Text(
-                                context.tr('lastRound.finish'),
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
                               ),
                             ),
                           ],

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
+import 'package:tridompoints/widgets/description_grid.dart';
 import 'package:tridompoints/widgets/player_overview.dart';
 import 'package:tridompoints/widgets/start_page.dart';
 import 'package:tridompoints/widgets/triangle.dart';
@@ -13,6 +14,7 @@ import '../events/event_player.dart';
 import '../events/state_player.dart';
 import '../models/rules.dart';
 import 'about.dart';
+import 'description.dart';
 import 'main_round.dart';
 
 class FirstRound extends StatefulWidget {
@@ -26,6 +28,7 @@ class FirstRound extends StatefulWidget {
 
 class _FirstRoundState extends State<FirstRound> {
   bool showSnackBar = true;
+  bool isExpanded = false;
   final GlobalKey _one = GlobalKey();
 
   @override
@@ -54,21 +57,21 @@ class _FirstRoundState extends State<FirstRound> {
         if (showSnackBar) {
           showSnackBar = false;
           Future.delayed(const Duration(seconds: 2), () {
-            if(mounted) {
+            if (mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: SizedBox(
-                  height: 40,
-                  child: Center(
-                    child: Text(context.tr('firstRound.text2', args: [(state.players.isNotEmpty) ? "${state.players.last.stackOfTiles.last}" : "???"]),
-                        style: const TextStyle(fontSize: 20, color: Colors.yellow)),
+                SnackBar(
+                  content: SizedBox(
+                    height: 40,
+                    child: Center(
+                      child: Text(context.tr('firstRound.text2', args: [(state.players.isNotEmpty) ? "${state.players.last.stackOfTiles.last}" : "???"]),
+                          style: const TextStyle(fontSize: 20, color: Colors.yellow)),
+                    ),
                   ),
+                  backgroundColor: Colors.blue,
+                  duration: const Duration(days: 365),
+                  showCloseIcon: true,
                 ),
-                backgroundColor: Colors.blue,
-                duration: const Duration(days: 365),
-                showCloseIcon: true,
-              ),
-            );
+              );
             }
           });
         }
@@ -79,7 +82,9 @@ class _FirstRoundState extends State<FirstRound> {
         child: Scaffold(
           appBar: AppBar(
             title: Text(
-              (state is PlayerLoaded && state.players.isNotEmpty) ? '${widget.title} - ${context.tr("round")} ${state.players.last.stackOfPoints.isNotEmpty ? state.players.last.stackOfPoints.last.x : 1}' : widget.title,
+              (state is PlayerLoaded && state.players.isNotEmpty)
+                  ? '${widget.title} - ${context.tr("round")} ${state.players.last.stackOfPoints.isNotEmpty ? state.players.last.stackOfPoints.last.x : 1}'
+                  : widget.title,
             ),
             actions: [
               IconButton(
@@ -120,12 +125,9 @@ class _FirstRoundState extends State<FirstRound> {
                     },
                     child: const PlayerOverview(),
                   ),
-                  const SizedBox(height: 10),
-                  Text(
-                    context.tr('firstRound.text1'),
-                    style: const TextStyle(fontSize: 18),
+                  Description(
+                    description: context.tr('firstRound.text1'),
                   ),
-                  const SizedBox(height: 30),
                   Wrap(
                     alignment: WrapAlignment.center,
                     children: List.generate(6, (index) {

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "intro_message": "Welcome\nto  Tridom Points!",
+  "intro_message": "Welcome\nto  Triomino Scorekeeper!",
   "round": "Round",
   "points": "Points",
   "tiles": "Tiles",
@@ -31,7 +31,9 @@
     "resetPlayerSelection": "Reset player selection"
   },
   "firstRound": {
-    "text1": "The player with the highest triple value starts.\nIf no one has a triple, the player with the highest score starts. Tap on this player before tapping on the triple or entering the number of points.\n\nThe starting point is the sum of the tile value and the starting bonus.",
+    "explanations": "Tap here for explanations.",
+    "hideExplanations": "Hide explanations.",
+    "text1": "1a. Identify the player with the highest triple.\n2a. Tap on the player's name.\n3a. Tap on the matching triple.\nOR If there is no triple:\n1b. Determines the player with the highest tile value.\n2b. Tap on the player's name.\n3b. Tap the 'Points of the starting tile'.\n4b. Enter the tile value.",
     "text2": "Number of tiles at the start: {}",
     "text3": "Points of the starting tile (tap here)",
     "title": "Opening"
@@ -39,7 +41,7 @@
   "mainRound": {
     "enter_points": "Enter the value of the tile for {}.",
     "edit": "Edit player",
-    "points": "Points  (tap here). If you have bonus points, see below, select them first!",
+    "points": "Points  (tap here).\nBonus points, see below, select first!",
     "undo": "Undo",
     "undo1": "Undo",
     "restart": "Restart",
@@ -52,16 +54,19 @@
     "cant_retry": "Still unable to lay. ({})",
     "retry": "Remaining repetitions: ({})",
     "not_finished": "The game is not over yet.",
-    "bonus": "{points} bonus points added for {name}. Now enter the value of the tile."
+    "bonus": "{points} bonus points added for {name}. Now enter the value of the tile.",
+    "description": "The player whose turn it is is marked. If necessary, he can be swapped by tapping on another player.\nNow enter the value of the tile placed under 'Points'.\nIf you have bonus points, e.g. a bridge, select it beforehand so that the player gets the corresponding bonus points.\nIf the current player cannot place a tile, tap on the symbol with the crossed out tile. The penalty points will be entered automatically.\nIf a player has entered an incorrect tile value, tap the pencil icon and then tap 'Undo'.\nYou can also tap and hold a player's name to change their name, points and tiles.\nTo view a player's score history, tap the player's score bar."
   },
   "lastRound": {
     "finish" : "All remaining tile values are entered.",
     "newRound": "New round",
+    "toWinner": "To the award ceremony",
     "sets": "Enter the value of the tiles that are not played, one after the other.",
-    "points": "Points of unplaced tiles",
+    "points": "Points of unplaced tiles (tap here).",
     "winners": "Award ceremony",
     "end": "End",
-    "title": "End of current round"
+    "title": "End of current round",
+    "description": "The tile values of the other players are entered one by one under 'Points'.\nOnce all the points have been entered, press 'New Round'.\nOnce a player has reached the number of points for the end of the game, the prize-giving ceremony will take place automatically."
   },
   "winnerPage": {
     "congratulations": "Congratulations, {}!",
@@ -92,9 +97,9 @@
   },
   "about": {
     "author": "© 2024 Carsten Winkler. All rights reserved.",
-    "title": "About Tridom Points",
+    "title": "About Triomino Scorekeeper",
     "descriptionLabel": "Description",
-    "description": "Tridom Points is an application that helps you to count the points in the game Super Tridom / Triominos. The app is free, ad-free and does not collect any personal data. I wrote this app in my spare time and appreciate any positive feedback. If you have any questions or suggestions, please email me at tridompoints@relaxmaus.de. Have fun playing!"
+    "description": "Triomino Scorekeeper is an application that helps you to count the points in the game Super Tridom / Triominos. The app is free, ad-free and does not collect any personal data. I wrote this app in my spare time and appreciate any positive feedback. If you have any questions or suggestions, please email me at tridompoints@relaxmaus.de. Have fun playing!"
   },
   "playerScoreBarChart": {
     "pointsHistoryOf": "Points history of {}"

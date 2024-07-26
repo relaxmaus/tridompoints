@@ -19,6 +19,7 @@ import '../events/state_player.dart';
 import '../models/player.dart';
 import '../models/rules.dart';
 import 'about.dart';
+import 'description.dart';
 import 'expandable_fab.dart';
 import 'first_round.dart';
 import 'last_round.dart';
@@ -540,7 +541,9 @@ class _MainRoundState extends State<MainRound> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  Description(
+                    description: context.tr('mainRound.description'),
+                  ),
                   Text(context.tr(
                     'mainRound.enter_points',
                     args: [
