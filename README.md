@@ -1,8 +1,8 @@
-# Tridom Points
+# Tridominos Scorekeeper
 
 ## Overview
 
-Tridom Points is a Flutter app designed to track the scores of any number of players in the games Triominos and Super Tridom. The app automatically applies game-specific rules, including bonus and penalty points for various actions. It recognizes the different phases of the game, such as the opening, main rounds, and the end of a round. Throughout the game, players can see not only their own scores but also the number of game pieces remaining. A bar chart makes it easy for all participants to see who is leading, and the score history for each player can be accessed at any time.
+Tridominos Scorekeeper is a Flutter app designed to track the scores of any number of players in the games Triominos and Super Tridom. The app automatically applies game-specific rules, including bonus and penalty points for various actions. It recognizes the different phases of the game, such as the opening, main rounds, and the end of a round. Throughout the game, players can see not only their own scores but also the number of game pieces remaining. A bar chart makes it easy for all participants to see who is leading, and the score history for each player can be accessed at any time.
 
 ## Features
 
@@ -40,7 +40,7 @@ Tridom Points is a Flutter app designed to track the scores of any number of pla
 
 ## Contributing
 
-We welcome contributions to enhance the Tridom Points app! To contribute:
+We welcome contributions to enhance the Tridominos Scorekeeper app! To contribute:
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature/YourFeature`).
@@ -54,8 +54,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
+triominos-scorekeeper@relaxmaus.de
+
 For questions or feedback, please reach out to tridompoints@relaxmaus.de or open an issue on GitHub.
 
 ---
 
-Thank you for using Tridom Points! We hope it enhances your gaming experience with Triominos and Super Tridom.
+Thank you for using Tridominos Scorekeeper! We hope it enhances your gaming experience with Triominos and Super Tridom.
