@@ -54,9 +54,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-triominos-scorekeeper@relaxmaus.de
-
-For questions or feedback, please reach out to tridompoints@relaxmaus.de or open an issue on GitHub.
+For questions or feedback, please reach out to triominos-scorekeeper@relaxmaus.de or open an issue on GitHub.
 
 ---
 
