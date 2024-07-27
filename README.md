@@ -2,11 +2,11 @@
 
 ## Overview
 
-Tridom Points is a Flutter app designed to track the scores of any number of players in the games Triomino and Super Tridom. The app automatically applies game-specific rules, including bonus and penalty points for various actions. It recognizes the different phases of the game, such as the opening, main rounds, and the end of a round. Throughout the game, players can see not only their own scores but also the number of game pieces remaining. A bar chart makes it easy for all participants to see who is leading, and the score history for each player can be accessed at any time.
+Tridom Points is a Flutter app designed to track the scores of any number of players in the games Triominos and Super Tridom. The app automatically applies game-specific rules, including bonus and penalty points for various actions. It recognizes the different phases of the game, such as the opening, main rounds, and the end of a round. Throughout the game, players can see not only their own scores but also the number of game pieces remaining. A bar chart makes it easy for all participants to see who is leading, and the score history for each player can be accessed at any time.
 
 ## Features
 
-- **Automatic Rule Recognition:** The app knows the specific rules for Triomino and Super Tridom, including bonuses and penalties for certain actions.
+- **Automatic Rule Recognition:** The app knows the specific rules for Triominos and Super Tridom, including bonuses and penalties for certain actions.
 - **Phase Management:** Automatically detects and manages the different phases of the game, such as the opening, main rounds, and end of a round.
 - **Real-Time Score Tracking:** Displays the scores of all players and the number of remaining game pieces in real-time.
 - **Leaderboard Visualization:** A bar chart shows the current standings, making it easy to see who is in the lead.
@@ -58,4 +58,4 @@ For questions or feedback, please reach out to tridompoints@relaxmaus.de or open
 
 ---
 
-Thank you for using Tridom Points! We hope it enhances your gaming experience with Triomino and Super Tridom.
+Thank you for using Tridom Points! We hope it enhances your gaming experience with Triominos and Super Tridom.

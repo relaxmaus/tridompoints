@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "intro_message": "Welcome\nto  Triomino Scorekeeper!",
+  "intro_message": "Welcome\nto  Triominos Scorekeeper!",
   "round": "Round",
   "points": "Points",
   "tiles": "Tiles",
@@ -97,9 +97,9 @@
   },
   "about": {
     "author": "© 2024 Carsten Winkler. All rights reserved.",
-    "title": "About Triomino Scorekeeper",
+    "title": "About Triominos Scorekeeper",
     "descriptionLabel": "Description",
-    "description": "Triomino Scorekeeper is an application that helps you to count the points in the game Super Tridom / Triominos. The app is free, ad-free and does not collect any personal data. I wrote this app in my spare time and appreciate any positive feedback. If you have any questions or suggestions, please email me at tridompoints@relaxmaus.de. Have fun playing!"
+    "description": "Triominos Scorekeeper is an application that helps you to count the points in the game Super Tridom / Triominos. The app is free, ad-free and does not collect any personal data. I wrote this app in my spare time and appreciate any positive feedback. If you have any questions or suggestions, please email me at tridompoints@relaxmaus.de. Have fun playing!"
   },
   "playerScoreBarChart": {
     "pointsHistoryOf": "Points history of {}"
