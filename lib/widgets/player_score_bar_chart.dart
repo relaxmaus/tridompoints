@@ -39,34 +39,59 @@ class PlayerScoreBarChart extends StatelessWidget {
           context: context,
           builder: (BuildContext context) {
             debugPrint('Tapped player: ${tappedPlayer.name} has ${tappedPlayer.stackOfTiles.length} tiles and ${tappedPlayer.stackOfPoints.length} points');
-            return AlertDialog(
-              title: Text(context.tr('playerScoreBarChart.pointsHistoryOf', args: [tappedPlayer.name])),
-              content: SingleChildScrollView(
-                child: ListBody(
-                  children: tappedPlayer.stackOfPoints.skip(1).map((point) {
-                    round++;
-                    if (prevValue != 0x0fffffff) {
-                      value = point.y.ceil() - prevValue;
-                    } else {
-                      value = point.y.ceil();
-                    }
-                    prevValue = point.y.ceil();
-                    return SingleChildScrollView(
+            return Dialog(
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
-                        child: Text(
-                            '${context.tr('round')} $round: ${point.y} ${context.tr('points')} (P: ${value >= 0 ? '+' : ''}$value;  Δ: ${tappedPlayer.stackOfTiles.length > round ? tappedPlayer.stackOfTiles[round] : 0})'),
-                    );
-                  }).toList(),
-                ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 10),
+                            Text(
+                              '${context.tr('player')}: ${tappedPlayer.name}',
+                              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            ...tappedPlayer.stackOfPoints.skip(1).map((point) {
+                              round++;
+                              if (prevValue != 0x0fffffff) {
+                                value = point.y.ceil() - prevValue;
+                              } else {
+                                value = point.y.ceil();
+                              }
+                              prevValue = point.y.ceil();
+                              return Text(
+                                  '${context.tr('round')} $round: ${point.y} ${context.tr('points')} (P: ${value >= 0 ? '+' : ''}$value;  Δ: ${tappedPlayer.stackOfTiles.length > round ? tappedPlayer.stackOfTiles[round] : 0})');
+                            }),
+                            const SizedBox(height: 60),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 10,
+                    right: 10,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(40.0),
+                      child: Container(
+                        color: Colors.blue.withOpacity(.5),
+                        child: IconButton(
+                          icon: const Icon(Icons.close),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              actions: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
             );
           },
         );

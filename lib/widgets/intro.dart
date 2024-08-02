@@ -94,7 +94,7 @@ class _IntroState extends State<Intro> {
                   Stack(children: [
                     GestureDetector(
                       onTapDown: (details) {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StartPage(title: 'Tridom Points')));
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StartPage(title: 'Tridom Scorekeeper')));
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -214,7 +214,7 @@ class _IntroState extends State<Intro> {
               showMessage = true;
               Future.delayed(const Duration(seconds: 3), () {
                 if (mounted) {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StartPage(title: 'Tridom Points')));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StartPage(title: 'Tridom Scorekeeper')));
                 }
               });
             }
@@ -242,7 +242,7 @@ class _IntroState extends State<Intro> {
     }
     if(stopped) {
       if (mounted) {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StartPage(title: 'Tridom Points')));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StartPage(title: 'Tridom Scorekeeper')));
       }
     }
   }

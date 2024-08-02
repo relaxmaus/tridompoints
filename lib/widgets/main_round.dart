@@ -68,7 +68,7 @@ class MainRound extends StatefulWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const LastRound(title: 'Tridom Points'),
+                  builder: (context) => const LastRound(title: 'Tridom Scorekeeper'),
                   settings: const RouteSettings(name: 'LastRound'),
                 ),
               );
@@ -122,7 +122,7 @@ class MainRound extends StatefulWidget {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const StartPage(title: 'Tridom Points'),
+                              builder: (context) => const StartPage(title: 'Tridom Scorekeeper'),
                               settings: const RouteSettings(name: 'StartPage'),
                             ),
                           );
@@ -144,7 +144,7 @@ class MainRound extends StatefulWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const StartPage(title: 'Tridom Points'),
+                builder: (context) => const StartPage(title: 'Tridom Scorekeeper'),
                 settings: const RouteSettings(name: 'StartPage'),
               ),
             );
@@ -371,50 +371,55 @@ class MainRound extends StatefulWidget {
               return AlertDialog(
                 contentPadding: const EdgeInsets.all(4),
                 title: Text(context.tr('mainRound.edit')),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    // TextField for name of player
-                    TextField(
-                      controller: TextEditingController(text: name),
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        labelText: context.tr(context.tr("name")),
-                      ),
-                      onChanged: (value) {
-                        player.name = value;
-                        BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.load, id: player.id));
-                      },
+                content: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // TextField for name of player
+                        TextField(
+                          controller: TextEditingController(text: name),
+                          decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: context.tr(context.tr("name")),
+                          ),
+                          onChanged: (value) {
+                            player.name = value;
+                            BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.load, id: player.id));
+                          },
+                        ),
+                        TextField(
+                          controller: TextEditingController(text: points),
+                          decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: context.tr("points"),
+                          ),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r'[-\d]')),],
+                          onChanged: (value) {
+                            player.stackOfPoints.isNotEmpty
+                                ? player.stackOfPoints.last = Point(player.stackOfPoints.last.x, int.tryParse(value) ?? player.stackOfPoints.last.y)
+                                : player.stackOfPoints.add(Point(1, int.tryParse(value) ?? 0));
+                            BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.load, id: player.id));
+                          },
+                        ),
+                        TextField(
+                          controller: TextEditingController(text: tiles),
+                          decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: context.tr("tiles"),
+                          ),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r'[-\d]')),],
+                          onChanged: (value) {
+                            player.stackOfTiles.isNotEmpty ? player.stackOfTiles.last = int.tryParse(value) ?? player.stackOfTiles.last : player.stackOfTiles.add(int.tryParse(value) ?? 0);
+                            BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.load, id: player.id));
+                          },
+                        ),
+                      ],
                     ),
-                    TextField(
-                      controller: TextEditingController(text: points),
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        labelText: context.tr("points"),
-                      ),
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
-                      onChanged: (value) {
-                        player.stackOfPoints.isNotEmpty
-                            ? player.stackOfPoints.last = Point(player.stackOfPoints.last.x, int.tryParse(value) ?? player.stackOfPoints.last.y)
-                            : player.stackOfPoints.add(Point(1, int.tryParse(value) ?? 0));
-                        BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.load, id: player.id));
-                      },
-                    ),
-                    TextField(
-                      controller: TextEditingController(text: tiles),
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        labelText: context.tr("tiles"),
-                      ),
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
-                      onChanged: (value) {
-                        player.stackOfTiles.isNotEmpty ? player.stackOfTiles.last = int.tryParse(value) ?? player.stackOfTiles.last : player.stackOfTiles.add(int.tryParse(value) ?? 0);
-                        BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.load, id: player.id));
-                      },
-                    ),
-                  ],
+                  ),
                 ),
                 actions: <Widget>[
                   TextButton(
@@ -477,7 +482,7 @@ class _MainRoundState extends State<MainRound> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const FirstRound(title: 'Tridom Points'),
+                      builder: (context) => const FirstRound(title: 'Tridom Scorekeeper'),
                       settings: const RouteSettings(name: 'FirstRound'),
                     ),
                   );
@@ -498,7 +503,7 @@ class _MainRoundState extends State<MainRound> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const LastRound(title: 'Tridom Points'),
+                        builder: (context) => const LastRound(title: 'Tridom Scorekeeper'),
                         settings: const RouteSettings(name: 'LastRound'),
                       ),
                     );
@@ -565,7 +570,7 @@ class _MainRoundState extends State<MainRound> {
                       ),
                     ),
                     keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+                    inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r'[-\d]')),],
                     onSubmitted: (value) {
                       MainRound.processPlayer(context, state, int.tryParse(value) ?? 0x7fffffff);
                       myController.clear();
@@ -1230,6 +1235,9 @@ class _MainRoundState extends State<MainRound> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FocusScope.of(context).requestFocus(myFocusNode);
+    });
     SharedPreferences.getInstance().then((prefs) {
       bool? showCaseMainRound = prefs.getBool('showCaseMainRound');
       if (showCaseMainRound == null || showCaseMainRound) {

@@ -43,7 +43,7 @@ class DescriptionState extends State<Description> {
         Visibility(
           visible: isExpanded,
           child: Container(
-            height: 200,
+            height: 220,
             margin:  const EdgeInsets.only(bottom: 10),
             padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
             decoration: BoxDecoration(

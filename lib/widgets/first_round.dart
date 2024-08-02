@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
-import 'package:tridompoints/widgets/description_grid.dart';
 import 'package:tridompoints/widgets/player_overview.dart';
 import 'package:tridompoints/widgets/start_page.dart';
 import 'package:tridompoints/widgets/triangle.dart';
@@ -28,7 +27,6 @@ class FirstRound extends StatefulWidget {
 
 class _FirstRoundState extends State<FirstRound> {
   bool showSnackBar = true;
-  bool isExpanded = false;
   final GlobalKey _one = GlobalKey();
 
   @override
@@ -169,7 +167,7 @@ class _FirstRoundState extends State<FirstRound> {
                       labelText: context.tr('firstRound.text3'),
                     ),
                     keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+                    inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r'[-\d]')),],
                     onSubmitted: (value) {
                       bool success = MainRound.processPlayer(context, state, int.parse(value) + Rules.startBonusNoTriple);
                       if (success) {
@@ -200,7 +198,7 @@ class _FirstRoundState extends State<FirstRound> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const StartPage(title: 'Tridom Points'),
+                        builder: (context) => const StartPage(title: 'Tridom Scorekeeper'),
                         settings: const RouteSettings(name: 'StartPage'),
                       ),
                     );

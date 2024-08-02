@@ -85,7 +85,7 @@ class _LastRoundState extends State<LastRound> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => const MainRound(
-                        title: 'Tridom Points',
+                        title: 'Tridom Scorekeeper',
                       ),
                       settings: const RouteSettings(name: 'MainRound'),
                     ),
@@ -131,7 +131,7 @@ class _LastRoundState extends State<LastRound> {
                       labelText: context.tr("lastRound.points"),
                     ),
                     keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+                    inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r'[-\d]')),],
                     onSubmitted: (value) {
                       MainRound.processPlayer(context, state, int.tryParse(value) ?? 0x7fffffff);
                       myController.clear();
@@ -169,7 +169,7 @@ class _LastRoundState extends State<LastRound> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => const FirstRound(
-                                title: 'Tridom Points',
+                                title: 'Tridom Scorekeeper',
                               ),
                               settings: const RouteSettings(name: 'FirstRound'),
                             ),

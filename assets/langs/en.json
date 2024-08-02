@@ -1,10 +1,12 @@
 {
-  "version": "1.0.0",
-  "intro_message": "Welcome\nto  Triominos Scorekeeper!",
+  "version": "1.0.1",
+  "intro_message": "Welcome\nto  Tridom Scorekeeper!",
   "round": "Round",
   "points": "Points",
   "tiles": "Tiles",
   "name": "Name",
+  "player": "Player",
+  "pointsPerRound": "Points per round",
   "editRules": {
     "title": "Edit game rules",
     "maxPlayers": "Maximum number of players in the game",
@@ -28,7 +30,14 @@
     "enterName": "Please fill in a name.",
     "addPlayer": "Add player",
     "startGame": "Start game",
-    "resetPlayerSelection": "Reset player selection"
+    "resetPlayerSelection": "Reset player selection",
+    "deletePlayer": "Delete player",
+    "deletePlayerQuestion": "Do you really want to delete player {}?",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "showKnownPlayers": "Show known players",
+    "hideKnownPlayers": "Hide known players",
+    "deletePlayerDescription": "To delete a player, tap and hold on the name."
   },
   "firstRound": {
     "explanations": "Tap here for explanations.",
@@ -97,9 +106,9 @@
   },
   "about": {
     "author": "© 2024 Carsten Winkler. All rights reserved.",
-    "title": "About Triominos Scorekeeper",
+    "title": "About Tridom Scorekeeper",
     "descriptionLabel": "Description",
-    "description": "Triominos Scorekeeper is an application that helps you to count the points in the game Super Tridom / Triominos. The app is free, ad-free and does not collect any personal data. I wrote this app in my spare time and appreciate any positive feedback. If you have any questions or suggestions, please email me at tridompoints@relaxmaus.de. Have fun playing!"
+    "description": "Tridom Scorekeeper is an application that helps you to count the points in the game Super Tridom / Triominos. The app is free, ad-free and does not collect any personal data. I wrote this app in my spare time and appreciate any positive feedback. If you have any questions or suggestions, please email me at tridompoints@relaxmaus.de. Have fun playing!"
   },
   "playerScoreBarChart": {
     "pointsHistoryOf": "Points history of {}"

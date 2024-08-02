@@ -29,7 +29,10 @@ Future<void> main() async {
       startLocale: initialLocale,
       useOnlyLangCode: true,
       child: ShowCaseWidget(
-        builder: (BuildContext context) => const MyApp(),
+        builder: (BuildContext context) => BlocProvider(
+          create: (context) => PlayerBloc(),
+          child: const MyApp(),
+        ),
       ),
     ),
   );
@@ -45,7 +48,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      title: 'Tridom Points',
+      title: 'Tridom Scorekeeper',
       home: BlocProvider(
         create: (context) => PlayerBloc(),
         child: MaterialApp(
@@ -53,7 +56,7 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
-          title: 'Tridom Points',
+          title: 'Tridom Scorekeeper',
           theme: ThemeData(
             primarySwatch: Colors.blue,
             floatingActionButtonTheme: const FloatingActionButtonThemeData(

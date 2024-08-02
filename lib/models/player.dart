@@ -40,8 +40,10 @@ class Player {
         'isActive': isActive,
         'retries': retries,
         'round': stackOfPoints.isNotEmpty ? stackOfPoints.last.x : 1,
-        'points': stackOfPoints.isNotEmpty ? stackOfPoints.last.y : 0,
-        'tiles': stackOfTiles.isNotEmpty ? stackOfTiles.last : 0,
+        //'points': stackOfPoints.isNotEmpty ? stackOfPoints.last.y : 0,
+        'stackOfPoints': stackOfPoints.map((point) => {'round': point.x, 'score': point.y}).toList(),
+        //'tiles': stackOfTiles.isNotEmpty ? stackOfTiles.last : 0,
+        'stackOfTiles': stackOfTiles.map((tiles) => {'tiles': tiles}).toList(),
       };
 
   static fromJson(playerJson) {
@@ -49,10 +51,12 @@ class Player {
       id: playerJson['id'],
       name: playerJson['name'],
       color: Color(playerJson['color']),
-      stackOfTiles: [playerJson['tiles']],
+      //stackOfTiles: [playerJson['tiles']],
+      stackOfTiles: List<int>.from(playerJson['stackOfTiles'].map((tiles) => tiles['tiles'])),
       retries: playerJson['retries'],
       isActive: playerJson['isActive'],
-      stackOfPoints: [Point(playerJson['round'], playerJson['points'])],
+      //stackOfPoints: [Point(playerJson['round'], playerJson['points'])],
+      stackOfPoints: List<Point>.from(playerJson['stackOfPoints'].map((point) => Point<int>(point['round'], point['score']))),
     );
   }
 }

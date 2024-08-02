@@ -69,49 +69,147 @@ class _WinnerPageState extends State<WinnerPage> with SingleTickerProviderStateM
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text( context.tr("winnerPage.congratulations", args: [(sortedPlayers.isNotEmpty ? sortedPlayers.first.name : "")]),
+                  child: Text(
+                    context.tr("winnerPage.congratulations", args: [(sortedPlayers.isNotEmpty ? sortedPlayers.first.name : "")]),
                     style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: sortedPlayers.length,
-                    itemBuilder: (context, index) {
-                      Color backgroundColor = sortedPlayers[index].color;
-                      Color textColor = getHighContrastComplementaryColor(backgroundColor);
-                      return Container(
-                        color: backgroundColor,
-                        child: ListTile(
-                          title: Text(
-                            sortedPlayers[index].name,
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: textColor,
-                            ),
-                          ),
-                          trailing: Text(
-                            '${sortedPlayers[index].stackOfPoints.isNotEmpty ? sortedPlayers[index].stackOfPoints.last.y : 0} ${context.tr('points')}',
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: textColor,
-                            ),
-                          ),
-                          leading: index == 0 ? RotationTransition(
-                            turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
-                            child: Icon(
-                              Icons.star,
-                              color: textColor,
-                              size: 30,
-                            ),) : const Icon(
-                            Icons.star,
-                            color:Colors.grey,
-                            size: 30,
+                    child: ListView.builder(
+                  itemCount: sortedPlayers.length,
+                  itemBuilder: (context, index) {
+                    Color backgroundColor = sortedPlayers[index].color;
+                    Color textColor = getHighContrastComplementaryColor(backgroundColor);
+                    return Container(
+                      color: backgroundColor,
+                      child: ListTile(
+                        title: Text(
+                          sortedPlayers[index].name,
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: textColor,
                           ),
                         ),
+                        trailing: Text(
+                          '${sortedPlayers[index].stackOfPoints.isNotEmpty ? sortedPlayers[index].stackOfPoints.last.y : 0} ${context.tr('points')}',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: textColor,
+                          ),
+                        ),
+                        leading: index == 0
+                            ? RotationTransition(
+                                turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
+                                child: Icon(
+                                  Icons.star,
+                                  color: textColor,
+                                  size: 30,
+                                ),
+                              )
+                            : const Icon(
+                                Icons.star,
+                                color: Colors.grey,
+                                size: 30,
+                              ),
+                      ),
+                    );
+                  },
+                )),
+                ElevatedButton(
+                  onPressed: () {
+                    List<Player> playerList = sortedPlayers.map((player) {
+                      // Create a map to store the last point of each round
+                      Map<int, Point> lastPointsPerRound = {};
+                      for (Point<num> point in player.stackOfPoints) {
+                        lastPointsPerRound[point.x.ceil()] = point;
+                      }
+                      // Create a new list with the last points of each round
+                      List<Point> filteredStackOfPoints = lastPointsPerRound.values.toList();
+                      return Player(
+                        id: player.id,
+                        name: player.name,
+                        color: player.color,
+                        stackOfPoints: filteredStackOfPoints,
+                        stackOfTiles: List.from(player.stackOfTiles),
+                        isActive: player.isActive,
+                        retries: player.retries,
                       );
-                    },
-                  )
-                ),
+                    }).toList();
+                    int maxRounds = playerList.map((player) => player.stackOfPoints.length).reduce(max);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Dialog(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    context.tr('pointsPerRound'),
+                                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                  ),
+                                  Table(
+                                    border: TableBorder.all(),
+                                    children: [
+                                      TableRow(
+                                        children: playerList.map((player) {
+                                          return Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              player.name,
+                                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                            ),
+                                          );
+                                        }).toList(),
+                                      ),
+                                      for (int roundIndex = 0; roundIndex < maxRounds; roundIndex++)
+                                        TableRow(
+                                          children: playerList.map((player) {
+                                            if (roundIndex < player.stackOfPoints.length) {
+                                              bool isHighest = player.stackOfPoints[roundIndex].y == playerList
+                                                  .where((player) => roundIndex < player.stackOfPoints.length)
+                                                  .map((player) => player.stackOfPoints[roundIndex].y)
+                                                  .reduce(max);
+                                              return Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  '${player.stackOfPoints[roundIndex].y}',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: isHighest ? FontWeight.bold : FontWeight.normal,
+                                                    color: isHighest ? Colors.red : Colors.black,
+                                                  ),
+                                                ),
+                                              );
+                                            } else {
+                                              return const Padding(
+                                                padding: EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  '-',
+                                                  style: TextStyle(fontSize: 16),
+                                                ),
+                                              );
+                                            }
+                                          }).toList(),
+                                        ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 60),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: Text("Punkteverlauf"),
+                )
               ],
             ),
           ),
@@ -146,12 +244,12 @@ class _WinnerPageState extends State<WinnerPage> with SingleTickerProviderStateM
       player.isActive = false;
     }
     // Navigieren zur FirstRound-Seite
-    BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.pageChanged, pageID:PageID.firstRound));
+    BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.pageChanged, pageID: PageID.firstRound));
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
         builder: (context) => const FirstRound(
-          title: 'Tridom Points',
+          title: 'Tridom Scorekeeper',
         ),
       ),
     );

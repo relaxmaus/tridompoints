@@ -37,8 +37,10 @@ class StartPageState extends State<StartPage> {
   late List<DropdownMenuItem<Color>> _colorMenuItems;
   bool _colorChanged = false;
   bool _isInitialized = false;
+  bool isExpanded = false;
   final GlobalKey _one = GlobalKey();
   final GlobalKey _two = GlobalKey();
+  bool hasSavedPlayers = false;
 
 /*List<DropdownMenuItem<Color>> get _colorMenuItems {
     List<DropdownMenuItem<Color>> items = [];
@@ -178,6 +180,145 @@ class StartPageState extends State<StartPage> {
                           },
                         ),
                       ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Colors.blueGrey, Colors.grey],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            Visibility(
+                              visible: hasSavedPlayers,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.zero,
+                                  ),
+                                  backgroundColor: Colors.grey[300],
+                                  padding: const EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 0),
+                                  visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    isExpanded = !isExpanded;
+                                  });
+                                },
+                                child: Text(
+                                  isExpanded ? context.tr('startPage.hideKnownPlayers') : context.tr('startPage.showKnownPlayers'),
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    height: 1.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: isExpanded,
+                              child: FutureBuilder<List<Player>>(
+                                future: getSavedPlayers(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState == ConnectionState.waiting) {
+                                    return const CircularProgressIndicator();
+                                  }
+                                  final savedPlayers = snapshot.data ?? [];
+                                  if (savedPlayers.isEmpty) {
+                                    return Container();
+                                  }
+                                  return GridView.builder(
+                                    padding: const EdgeInsets.all(0),
+                                    shrinkWrap: true,
+                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2, // Number of columns
+                                      childAspectRatio: 4, // Adjust as needed for item size
+                                    ),
+                                    itemCount: savedPlayers.length,
+                                    itemBuilder: (context, index) {
+                                      final player = savedPlayers[index];
+                                      return Container(
+                                        margin: EdgeInsets.zero,
+                                        padding: EdgeInsets.zero,
+                                        child: ListTile(
+                                          dense: true,
+                                          contentPadding: const EdgeInsets.only(left: 5.0, top: 0.0),
+                                          horizontalTitleGap: 0.0,
+                                          visualDensity: const VisualDensity(horizontal: 4.0, vertical: -4.0),
+                                          title: Text(
+                                            player.name,
+                                            style: const TextStyle(fontSize: 20),
+                                          ),
+                                          leading: Container(
+                                            margin: EdgeInsets.zero,
+                                            padding: EdgeInsets.zero,
+                                            width: 16,
+                                            height: 16,
+                                            color: player.color,
+                                          ),
+                                          onTap: () {
+                                            BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.playerAdded, player: player));
+                                          },
+                                          onLongPress: () {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  title: Text(context.tr('startPage.deletePlayer')),
+                                                  content: Text(context.tr('startPage.deletePlayerQuestion', args: [player.name])),
+                                                  actions: <Widget>[
+                                                    TextButton(
+                                                      child: Text(context.tr('startPage.cancel')),
+                                                      onPressed: () {
+                                                        if(context.mounted) {
+                                                          Navigator.of(context).pop();
+                                                        }
+                                                      },
+                                                    ),
+                                                    TextButton(
+                                                      child: Text(context.tr('startPage.confirm')),
+                                                      onPressed: () async {
+                                                        setState(() {
+                                                          savedPlayers.removeAt(index);
+                                                          BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.playerRemoved, player: player));
+                                                        });
+                                                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                                                        String? playersJson = prefs.getString('playersInfo');
+                                                        if (playersJson != null) {
+                                                          List<dynamic> playersList = json.decode(playersJson);
+                                                          playersList.removeWhere((p) => p['name'] == player.name);
+                                                          await prefs.setString('playersInfo', json.encode(playersList));
+                                                        }
+                                                        if(context.mounted) {
+                                                          Navigator.of(context).pop();
+                                                        }
+                                                      },
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                        Visibility(
+                          visible: isExpanded,
+                          child: Text(
+                            context.tr('startPage.deletePlayerDescription'),
+                            style: const TextStyle(fontSize: 12),
+                            softWrap: true,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                          ],
+                        ),
+                      ),
                       Visibility(
                         visible: state.players.length < Rules.maxPlayers,
                         child: ElevatedButton(
@@ -188,8 +329,6 @@ class StartPageState extends State<StartPage> {
                               Player newPlayer = Player.simple(name: _name, color: _color, id: state.count + 1);
                               BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.playerAdded, player: newPlayer));
                               savePlayerInfo(_name, _color);
-                              //_colorMap.remove(newPlayer.color);
-                              //_color = _colorMap.keys.first;
                               _colorMenuItems.removeWhere((DropdownMenuItem<Color> item) {
                                 return item.value?.value == _color.value;
                               });
@@ -218,7 +357,7 @@ class StartPageState extends State<StartPage> {
                                   BlocProvider.of<PlayerBloc>(context).add(PlayerEvent(type: PlayerEventType.pageChanged, pageID: PageID.firstRound));
                                   Navigator.pushReplacement(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const FirstRound(title: 'Tridom Points')),
+                                    MaterialPageRoute(builder: (context) => const FirstRound(title: 'Tridom Scorekeeper')),
                                   );
                                 }
                               : null,
@@ -256,7 +395,7 @@ class StartPageState extends State<StartPage> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const StartPage(title: 'Tridom Points'),
+                          builder: (context) => const StartPage(title: 'Tridom Scorekeeper'),
                           settings: const RouteSettings(name: 'StartPage'),
                         ),
                       );
@@ -436,7 +575,7 @@ class StartPageState extends State<StartPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const FirstRound(
-                    title: 'Tridom Points',
+                    title: 'Tridom Scorekeeper',
                   ),
                   settings: const RouteSettings(name: 'FirstRound'),
                 ),
@@ -447,7 +586,7 @@ class StartPageState extends State<StartPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const StartPage(
-                    title: 'Tridom Points',
+                    title: 'Tridom Scorekeeper',
                   ),
                   settings: const RouteSettings(name: 'startPage'),
                 ),
@@ -458,7 +597,7 @@ class StartPageState extends State<StartPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const MainRound(
-                    title: 'Tridom Points',
+                    title: 'Tridom Scorekeeper',
                   ),
                   settings: const RouteSettings(name: 'mainRound'),
                 ),
@@ -469,7 +608,7 @@ class StartPageState extends State<StartPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const LastRound(
-                    title: 'Tridom Points',
+                    title: 'Tridom Scorekeeper',
                   ),
                   settings: const RouteSettings(name: 'lastRound'),
                 ),
@@ -480,7 +619,7 @@ class StartPageState extends State<StartPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const WinnerPage(
-                    title: 'Tridom Points',
+                    title: 'Tridom Scorekeeper',
                   ),
                   settings: const RouteSettings(name: 'winnerPage'),
                 ),
@@ -495,6 +634,9 @@ class StartPageState extends State<StartPage> {
       }
     });
     context.read<PlayerBloc>().add(PlayerEvent(type: PlayerEventType.load));
+    getSavedPlayers().then((savedPlayers) {
+      hasSavedPlayers = savedPlayers.isNotEmpty;
+    });
   }
 
   void savePlayerInfo(String name, Color color) async {
@@ -603,5 +745,22 @@ class StartPageState extends State<StartPage> {
         ),
       );
     }).toList();
+  }
+
+  Future<List<Player>> getSavedPlayers() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? playersJson = prefs.getString('playersInfo');
+    List<Player> savedPlayers = [];
+    if (playersJson != null) {
+      final List<dynamic> playersList = json.decode(playersJson);
+      for (var player in playersList) {
+        String name = player['name'];
+        String hexColorString = player['color'];
+        Color color = hexToColor(hexColorString);
+        savedPlayers.add(Player.simple(name: name, color: color, id: savedPlayers.length + 1));
+      }
+    }
+    hasSavedPlayers = savedPlayers.isNotEmpty;
+    return savedPlayers;
   }
 }

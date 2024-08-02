@@ -1,10 +1,12 @@
 {
   "version": "1.0.0",
-  "intro_message": "Willkommen\nbei Triominos Scorekeeper!",
+  "intro_message": "Willkommen\nbei Tridom Scorekeeper!",
   "round": "Runde",
   "points": "Punkte",
   "tiles": "Steine",
   "name": "Name",
+  "player": "Spieler",
+  "pointsPerRound": "Punkte pro Runde",
   "editRules": {
     "title": "Spielregeln bearbeiten",
     "maxPlayers": "Maximale Anzahl der Spieler in einem Spiel",
@@ -28,13 +30,20 @@
     "enterName": "Bitte gib einen Namen ein.",
     "addPlayer": "Spieler hinzufügen",
     "startGame": "Spiel starten",
-    "resetPlayerSelection": "Spielerauswahl zurücksetzen"
+    "resetPlayerSelection": "Spielerauswahl zurücksetzen",
+    "deletePlayer": "Spieler löschen",
+    "deletePlayerQuestion": "Soll der/die Spieler/in {} wirklich gelöscht werden?",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "showKnownPlayers": "Bekannte Spieler anzeigen",
+    "hideKnownPlayers": "Bekannte Spieler ausblenden",
+    "deletePlayerDescription": "Zum Löschen eines Spielers lange auf den Namen tippen."
   },
   "firstRound": {
     "explanations": "Tippe hier für Erklärungen.",
     "hideExplanations": "Erklärungen ausblenden.",
-    "text1": "1a. Ermittle den Spieler mit dem höchsten Triple.\n2a. Tippe den entsprechenden Spielernamen an.\n3a. Tippe den passenden Triple an.\nODER Wenn kein Triple vorhanden ist:\n1b. Ermittelt den Spieler mit dem höchsten Steinwert.\n2b. Tippe den entsprechenden Spielernamen an.\n3b. Tippe auf den Button 'Punkte des Startsteins'.\n4b. Trage die Steinwewert ein.",
-    "text2": "Anzahl der Spielsteine zu Beginn: {}",
+    "text1": "1a. Ermittle den Spieler mit dem höchsten Triple.\n2a. Tippe den entsprechenden Spielernamen an.\n3a. Tippe den passenden Triple an.\nODER Wenn kein Triple vorhanden ist:\n1b. Ermittelt den Spieler mit dem höchsten Steinwert.\n2b. Tippe den entsprechenden Spielernamen an.\n3b. Tippe auf den Button 'Punkte des Startsteins'.\n4b. Trage den Steinwert ein.",
+    "text2": "Spielsteine zu Beginn: {}",
     "text3": "Punkte des Startsteins (hier tippen)",
     "title": "Eröffnung"
   },
@@ -55,7 +64,7 @@
     "retry": "Verbleibende Wiederholungen: {}",
     "not_finished": "Das Spiel ist noch nicht beendet.",
     "bonus": "Für {name} {points} Bonuspunkte hinzugefügt. Gibt jetzt noch den Steinwert ein.",
-    "description": "Der Spieler, der an der Reihe ist, ist markiert. Er kann bei Bedarf durch Antippen eines anderen Spielers getauscht werden.\nGib nun den Steinwert des ausgelegten Steins bei 'Punkte' ein.\nWenn du Bonuspunkte hast, z.B. eine Brücke, wähle diese vorher aus, damit der Spieler die entsprechenden Bonuspunkte zusätzlich erhält.\nKann der aktuelle Spieler nicht legen, tippe auf das Symbol mit dem durchgestrichenen Stein. Die Strafpunkte werden automatisch eingetragen.\nHat ein Spieler einen Steinwert falsch eingegeben, so tippe auf das Bleistiftsymbol und dann auf 'Rückgängig'.\nSie können auch den Namen des Spielers lange antippen, um den Namen, die Punkte und die Anzahl der Steine zu ändern.\nMöchtest du die Punktehistorie eines Spielers sehen, so tippe auf den Punktebalken des Spielers."
+    "description": "Der Spieler, der an der Reihe ist, ist markiert. Er kann bei Bedarf durch Antippen eines anderen Spielers getauscht werden.\nGib nun den Steinwert des ausgelegten Steins bei 'Punkte' ein.\nWenn du Bonuspunkte hast, z.B. eine Brücke, wähle diese vorher aus, damit der Spieler die entsprechenden Bonuspunkte zusätzlich erhält.\nKann der aktuelle Spieler nicht legen, tippe auf das Symbol mit dem durchgestrichenen Stein. Die Strafpunkte werden automatisch eingetragen.\nHat ein Spieler einen Steinwert falsch eingegeben, so tippe auf das Bleistiftsymbol und dann auf 'Rückgängig'.\nDu kannst auch den Namen des Spielers lange antippen, um den Namen, die Punkte und die Anzahl der Steine zu ändern.\nMöchtest du die Punktehistorie eines Spielers sehen, so tippe auf den Punktebalken des Spielers."
   },
   "lastRound": {
     "finish" : "Alle verbliebenen Steinwerte sind eingetragen.",
@@ -93,20 +102,20 @@
     "finishRoundTitle": "Nächste Runde",
     "finishRoundDescription": "Startet hier die nächste Runde, wenn alle Punkte eingetragen sind.",
     "scoreChartTitle": "Punkteverlauf",
-    "scoreChartDescription": "Schauen Sie sich die Entwicklung der Punkte der Spieler an, in dem du auf den Balken tippst."
+    "scoreChartDescription": "Schaue dir die Entwicklung der Punkte der Spieler an, in dem du auf den Balken tippst."
   },
   "about": {
     "author": "© 2024 Carsten Winkler. Alle Rechte vorbehalten.",
-    "title": "Über Triominos Scorekeeper",
+    "title": "Über Tridom Scorekeeper",
     "descriptionLabel": "Beschreibung",
-    "description": "Triominos Scorekeeper ist eine App, die dir hilft, die Punkte beim Spiel Super-Tridom / Triominos zu zählen. Die App ist kostenlos, werbefrei und erhebt auch keinerlei persönliche Daten. Ich habe diese App in meiner Freizeit geschrieben und freue mich über jedes positives Feedback. Wenn du Fragen oder Anregungen hast, schreibe mir eine E-Mail an tridompoints@relaxmaus.de. Viel Spaß beim Spielen!"
+    "description": "Tridom Scorekeeper ist eine App, die dir hilft, die Punkte beim Spiel Super-Tridom / Triominos zu zählen. Die App ist kostenlos, werbefrei und erhebt auch keinerlei persönliche Daten. Ich habe diese App in meiner Freizeit geschrieben und freue mich über jedes positives Feedback. Wenn du Fragen oder Anregungen hast, schreibe mir eine E-Mail an tridompoints@relaxmaus.de. Viel Spaß beim Spielen!"
   },
   "playerScoreBarChart": {
     "pointsHistoryOf": "Punkteverlauf von {}"
   },
   "undo" : {
     "title": "Aktion rückgängig machen",
-    "question": "Wollen Sie den letzten Zug von {name} rückgängig machen? Dies wird die letzten Punkte ({points}{bonus}) rückgängig machen.",
+    "question": "Willst du den letzten Zug von {name} rückgängig machen? Dies wird die letzten Punkte ({points}{bonus}) rückgängig machen.",
     "yes": "Ja",
     "no": "Nein"
   }
