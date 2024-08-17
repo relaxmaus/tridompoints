@@ -30,6 +30,9 @@ Tridom Scorekeeper is a Flutter app designed to track the scores of any number o
 2. Open the project in Android Studio.
 3. Build and run the app on your device or emulator.
 
+### Download as Android App
+[Tridom Scorekeeper](https://play.google.com/store/apps/details?id=de.relaxmaus.tridompoints&pcampaignid=web_share)
+
 ### Usage
 
 1. Start a new game by entering the names of the players.
